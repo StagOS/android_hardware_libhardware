@@ -625,7 +625,7 @@ static int stream_set_new_devices(struct pcm_config *config,
             if (device_info->proxy.alsa_config.rate != config->rate) {
                 ALOGW("Retry with a different sample rate: %d", device_info->proxy.alsa_config.rate);
                 config->rate = device_info->proxy.alsa_config.rate;
-                status = proxy_prepare(&device_info->proxy, &device_info->profile, config);
+                status = proxy_prepare(&device_info->proxy, &device_info->profile, config, is_bit_perfect);
                 if (status != 0) {
                     ALOGE("%s failed to prepare device card=%d;device=%d",
                             __func__, cards[i], devices[i]);
